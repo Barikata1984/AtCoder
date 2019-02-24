@@ -1,0 +1,1 @@
+#include <iostream>#include <string>#include <stdlib.h>using namespace std;int main(){    string str;    cin >> str;        int ans = 0;    ans += 10000 * stoi(str.substr(0, 4));    ans += 100 * stoi(str.substr(5, 2));    ans += stoi(str.substr(8, 2));    if(ans <= 20190430) cout << "Heisei" << endl;    else cout << "TBD" << endl;}

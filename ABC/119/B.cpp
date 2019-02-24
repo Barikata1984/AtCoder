@@ -1,0 +1,1 @@
+#include <string>#include <iostream>using namespace std;int main(){    int n;    cin >> n;    float ans = 0;    float value;    string unit;    for(int i = 0; i < n; ++i){        cin >> value >> unit;        if("BTC" == unit) value = value * 380000;        ans += value;     }    cout << ans << endl;}
