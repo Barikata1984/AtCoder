@@ -1,0 +1,1 @@
+#include <iostream>int main(){    long long n, m;    std::cin >> n >> m;    std::vector<vector<long long>> bridges(m, vector<long long>);    std::vector<long long> bufVec(2);    for(int i = 0; i < m; ++i){        std::cin >> bufVec.at(0) >> bufVec.at(1);        bridges.at(i) = bufVec;    }}

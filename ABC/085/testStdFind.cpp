@@ -1,0 +1,1 @@
+#include <vector>#include <iostream>#include <algorithm>int main(){    std::string str = "abcdefg";    std::string write = str.substr(0, 10);    std::cout << "substr: " << write << std::endl;     return 0;}
