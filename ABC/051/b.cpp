@@ -1,0 +1,1 @@
+#include <iostream>int main(){    int k, s;    std::cin >> k >> s;    int counter = 0;    for(int n = 0; n <= k; ++n){        for(int m = 0; m <= k; ++m){            for(int l = 0; l <= k; ++l){                if(s == n + m + l){                    ++counter;                }            }        }    }    std::cout << counter << std::endl;    return 0;}
