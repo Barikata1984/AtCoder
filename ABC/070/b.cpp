@@ -1,0 +1,1 @@
+#include <iostream>#include <map>int main(){    std::map<char, int> points;    int val;      std::cin >> val;    points.make_pair("a1", val);    std::cin >> val;    points.make_pair("a2", val);    std::cin >> val;    points.make_pair("b1", val);    std::cin >> val;    points.make_pair("b2", val);    }
