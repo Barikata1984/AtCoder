@@ -1,0 +1,1 @@
+#include <iostream>#include <map>#include <vector>#include <algorithm>int main(){    std::string s;    std::cin >> s;    int sum = 0;    std::cout << "" << std::endl;    return 0;}
