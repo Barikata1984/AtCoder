@@ -1,0 +1,1 @@
+#include <iostream>#include <map>#include <vector>#include <algorithm>int main(){    long long n, m;    std::cin >> n >> m;    if(2 * n < m){        std::cout << n + (m - 2 * n) / 4 << std::endl;;    }else{        std::cout << m / 2 << std::endl;    }    std::cout << "" << std::endl;    return 0;}
