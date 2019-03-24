@@ -1,0 +1,1 @@
+#include <iostream>#include <map>#include <vector>#include <algorithm>int main(){    char b;    std::cin >> b;    if('A' == b){        std::cout << 'T' << std::endl;    }else if('T' == b){        std::cout << 'A' << std::endl;    }else if('C' == b){        std::cout << 'G' << std::endl;    }else{        std::cout << 'C' << std::endl;    }    return 0;}
