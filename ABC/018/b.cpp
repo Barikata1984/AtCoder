@@ -1,0 +1,1 @@
+#include <iostream>#include <map>#include <vector>#include <algorithm>int main(){    int ;    std::cin >> ;    std::vector<int> vec;    std::string str;    std::cout << "" << std::endl;    return 0;}
