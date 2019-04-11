@@ -1,0 +1,1 @@
+#include <iostream>#include <map>#include <vector>#include <algorithm>int main(){    int n, k;    std::cin >> n >> k;    std::cout << (n - 1 + (k - 2)) / (k - 1) << std::endl;    return 0;}
