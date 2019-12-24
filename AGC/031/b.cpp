@@ -1,1 +1,0 @@
-#include <iostream>#include <map>#include <vector>#include <algorithm>int main(){    std::string s;    std::cin >> s;    std::sort(s.begin(), s.end());    s.erase(std::unique(s.begin(), s.end()), s.end());        int ans;    for(int i = 1; )    std::string str;    std::cout << "" << std::endl;    return 0;}
