@@ -1,0 +1,1 @@
+#include <iostream>int main(){    int n, d;    std::cin >> n >> d;    int val = 2 * d + 1;    int ans = n / val;    if(0 != n % val){        ++ans;    }        std::cout << ans << std::endl;    return 0;}

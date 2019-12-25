@@ -1,0 +1,1 @@
+#include <iostream>#include <vector>int main(){    int n, x;    std::cin >> n >> x;    int buf, l = 0, count = 1;    for(int i = 0; i < n; ++i){        std::cin >> buf;        l += buf;        if(l <= x){            ++count;        }    }    std::cout << count << std::endl;    return 0;}
