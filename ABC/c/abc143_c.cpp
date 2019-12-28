@@ -1,0 +1,1 @@
+#include <iostream>int main(){    int n;    std::cin >> n;    std::string s;    std::cin >> s;    int index = 1;    while(s.size() != index){        if(s.at(index - 1) == s.at(index)){            s.erase(index, 1);            --index;        }        ++index;    }    std::cout << s.size() << std::endl;    return 0;}
