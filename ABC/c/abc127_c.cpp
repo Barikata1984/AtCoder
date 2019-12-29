@@ -1,0 +1,1 @@
+#include <iostream>#include <algorithm>int main(){    int n, m;    std::cin >> n >> m;    int lPrev= 0, l, rPrev = 1000000, r;    for(int i = 0; i < m; ++i){        std::cin >> l >> r;        l = std::max(lPrev, l);        r = std::min(rPrev, r);        lPrev = l;        rPrev = r;    }    std::cout << std::max(0, r - l + 1) << std::endl;    return 0;}
