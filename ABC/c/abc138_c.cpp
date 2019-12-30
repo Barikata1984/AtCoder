@@ -1,0 +1,1 @@
+#include <iostream>#include <vector>int main(){    int n;    std::cin >> n;        std::vector<double> v(n);    for(int i = 0; i < n; ++i){        std::cin >> v.at(i);    }    std::sort(v.begin(), v.end());    for(int i = 1; i < n; ++i){        v.at(i) = (v.at(i - 1) + v.at(i)) / 2.0;    }    std::cout << v.at(n - 1) << std::endl;    return 0;}
