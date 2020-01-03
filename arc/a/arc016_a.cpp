@@ -1,0 +1,1 @@
+#include <iostream>int main(){    int n, m;    std::cin >> n >> m;    int ans = 2;    if(m == ans){        ans = 1;    }    std::cout << ans << std::endl;    return 0;}
