@@ -1,0 +1,1 @@
+#include <iostream>int main(){    long long x, y;    std::cin >> x >> y;    long long z = 0, count = 0;    while(z < y){        z += x;        ++count;    }    std::cout << count << std::endl;    return 0;}

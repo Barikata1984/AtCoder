@@ -1,0 +1,1 @@
+#include <iostream>#include <cmath>int main(){    std::string s;    std::cin >> s;    long long k;    std::cin >> k;    int sz = s.size();    int digit = 0;    int i = 0;    while(digit < k){        digit += std::pow(s.at(i++), 5 * std::pow(10, 12));        std::cout << digit << std::endl;    }    std::cout << s.at(i - 1) << std::endl;    return 0;}
