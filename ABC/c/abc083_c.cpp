@@ -1,1 +1,1 @@
-#include <iostream>int main(){    long long x, y;    std::cin >> x >> y;    long long z = 0, count = 0;    while(z < y){        z += x;        ++count;    }    std::cout << count << std::endl;    return 0;}
+#include <iostream>#include <vector>int main(){    long long x, y;    std::cin >> x >> y;    std::vector<long long> vec(1, x);    long long i = 0;    while(vec.at(i) * 2 <= y){        vec.push_back(vec.at(i++) * 2);    }    std::cout << vec.size() << std::endl;    return 0;}
