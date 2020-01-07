@@ -1,0 +1,1 @@
+#include <iostream>int main(){    long long n, m;    std::cin >> n >> m;    long long ans = (n - 2) * (m - 2);    if(1 == n && 1 == m){        ans = 1;    }else if(1 == n || 1 == m){        ans = n * m - 2;    }else if(2 == n || 2 == m){        ans = 0;    }    std::cout << ans << std::endl;    return 0;}
