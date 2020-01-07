@@ -35,10 +35,6 @@ int main(){
         flg = false;
     }
 
-    if(0 != sum %3){
-        flg = false;
-    }
-
     std::string ans = "Yes";
     if(!flg){
         ans = "No";
