@@ -1,0 +1,1 @@
+#include <iostream>int main(){    int n, m;    std::cin >> n >> m;    std::vector<std::vector<int>> grid(m, std::vector<int>(m, 0));    int a, b;    for(int i = 0; i < m; ++i){        std::cin >> a >> b;        grid.at(a).at(b); = 1    }}
