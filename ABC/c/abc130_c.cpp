@@ -1,0 +1,1 @@
+#include <iostream>#include <iomanip>int main(){    double w, h, a, c;    std::cin >> w >> h >> a >> c;    double b = w - a, d = h - c;    double ans = std::max(std::min(a * h, b * h), std::min(c * w, d * w));    bool flg = a == b && c == d;     std::cout << std::fixed << std::setprecision(9) << w * h / 2 << " " << (int) flg << std::endl;    return 0;}
