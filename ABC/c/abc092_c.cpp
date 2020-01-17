@@ -1,0 +1,1 @@
+#include <iostream>int main(){    int n;    std::cin >> n;    std::vector<int> a(n);    int sum = 0;    for(int i = 0; i < n; ++i){        std::cin >> a.at(i);        sum += a.at(i);    }    }
