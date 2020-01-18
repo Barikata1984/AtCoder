@@ -1,1 +1,0 @@
-#include <iostream>int main(){    int x;    std::cin >> x;    int i = 1, sum = 0;    while(sum < x){        sum += i++;    }    std::cout << i - 1 << std::endl;    return 0;}
