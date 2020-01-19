@@ -1,1 +1,1 @@
-#include <iostream>
+#include <iostream>#include <cmath>int main(){    int n, m;    std::cin >> n >> m;    int ans = 1900 * 2;    if(1 != n || 1 != m){        ans = ((n - m) * 100 + 1900 * m) * std::pow(2, m);    }    std::cout << ans << std::endl;    return 0;}
