@@ -2,13 +2,18 @@
 #include <cmath>
 
 int main(){
-    long a, b;
-    std::cin >> a >> b;
+    long long n;
+    std::cin >> n;
 
-    long count = 1;
-    while(0 != a * count % b){
-        ++count;
+    long long ans = 0, val = 10;
+    if(0 == n % 2){
+        while(val <= n){
+            ans += n / val;
+            val *= 5;
+        }
     }
 
-    std::cout << a * count << std::endl;
+    std::cout << ans << std::endl;
+    
+    return 0;
 }
