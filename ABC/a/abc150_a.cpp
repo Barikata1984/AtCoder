@@ -1,0 +1,1 @@
+#include <iostream>int main(){    int k, x;    std::cin >> k >> x;    std::string ans = "Yes";    if(500 * k < x){        ans = "No";    }    std::cout << ans << std::endl;    return 0;}
