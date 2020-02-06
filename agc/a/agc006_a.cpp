@@ -1,0 +1,1 @@
+#include <iostream>int main(){    int n;    std::cin >> n;    std::string s, t;    std::cin >> s >> t;    int ans = 0;    for(int i = n; 0 <= i; --i){        if(s.substr(n - i, i) == t.substr(0, i)){            ans = n + n - i;            break;        }    }    std::cout << ans << std::endl;    return 0;}
