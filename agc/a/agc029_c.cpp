@@ -1,0 +1,1 @@
+#include <iostream>int main(){    std::string s;    std::cin >> s;    int sz = s.size(), i = s.find("BW"), counts = 0;    while(std::string::npos != i){        s = s.substr(0, i) + "WB"+ s.substr(i + 2, sz - (i + 2));        i = s.find("BW");        ++counts;        std::cout << s << std::endl;    }    std::cout << counts <<std::endl;    return 0;}
