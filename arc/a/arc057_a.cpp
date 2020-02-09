@@ -1,0 +1,1 @@
+#include <iostream>#include <cmath>int main(){    long long a, k;    std::cin >> a >> k;    long long ceil = 2 * std::pow(10, 12), count = 0;    if(0 == k){        count = ceil - a;    }else{        while(a < ceil){            a += 1 + k * a;            ++count;        }    }    std::cout << count << std::endl;    return 0;}
