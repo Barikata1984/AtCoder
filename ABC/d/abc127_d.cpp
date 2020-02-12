@@ -1,1 +1,52 @@
-#include <iostream>#include <numeric>#include <vector>int main(){    int n, m;    std::cin >> n >> m;    std::vector<int> a;    for(int i = 0; i < n; ++i){        int  val;        std::cin >> val;        a.push_back(val);    }    std::sort(a.begin(), a.end());        std::vector<int> vec;    for(int i = 0; i < m; ++i){        int b, c;        std::cin >> b >> c;        for(int j = 0; j < b; ++j){            vec.push_back(c);        }    }    std::sort(vec.begin(), vec.end(), std::greater<int>());    int sz = vec.size();    long long add = 0;    int i = 0;    for(; i < sz; ++i){        if(a.at(i) <= vec.at(i)){            add += vec.at(i);        }else{            break;        }    }    std::cout << std::accumulate(a.begin() + i, a.end(), 0ll) + add << std::endl;    return 0;}
+#include <algorithm>
+#include <iostream>
+#include <numeric>
+#include <vector>
+#include <map>
+
+int main(){
+    int n, m;
+    std::cin >> n >> m;
+
+    std::vector<long long> a(n);
+    for(int i = 0; i < n; ++i){
+        std::cin >> a.at(i);
+    }
+    
+    std::sort(a.begin(), a.end());
+
+    std::multimap<long long, long long> mp;
+    for(int i = 0; i < m; ++i){
+        long long b, c;
+        std::cin >> b >> c;
+        mp.insert(std::make_pair(c, b));
+    }
+
+    long long i = 0;
+    auto ritr = mp.rbegin();
+    std::vector<long long> vec;
+    while(0 < n - i){
+        long long val = ritr->second;
+        if(val <= 0){
+            break;
+        }else if(n - i < val){
+            val -= n - i;
+        }
+        std::vector<long long> buf(val, ritr->first);
+        vec.insert(vec.end(), buf.begin(), buf.end());
+        i += val;
+        ++ritr;
+    }
+
+    for(int j = 0; j < n; ++j){
+        if(a.at(j) < vec.at(j)){
+            a.at(j) = vec.at(j);
+        }else{
+            break;
+        }
+    }
+
+    std::cout << std::accumulate(a.begin(), a.end(), 0ll) << std::endl;
+
+    return 0;
+}
