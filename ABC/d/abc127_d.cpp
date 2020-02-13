@@ -5,7 +5,7 @@
 #include <map>
 
 int main(){
-    int n, m;
+    long long n, m;
     std::cin >> n >> m;
 
     std::vector<long long> a(n);
@@ -16,7 +16,7 @@ int main(){
     std::sort(a.begin(), a.end());
 
     std::multimap<long long, long long> mp;
-    for(int i = 0; i < m; ++i){
+    for(long long i = 0; i < m; ++i){
         long long b, c;
         std::cin >> b >> c;
         mp.insert(std::make_pair(c, b));
@@ -25,20 +25,18 @@ int main(){
     long long i = 0;
     auto ritr = mp.rbegin();
     std::vector<long long> vec;
-    while(0 < n - i){
-        long long val = ritr->second;
-        if(val <= 0){
-            break;
-        }else if(n - i < val){
-            val -= n - i;
-        }
-        std::vector<long long> buf(val, ritr->first);
+    while(i < n){
+//    while(i < n || mp.rend() != ritr){
+        long long val = ritr->first, num = ritr->second;
+        std::cout << i << std::endl;
+        std::vector<long long> buf(num, val);
         vec.insert(vec.end(), buf.begin(), buf.end());
-        i += val;
+        i += num;
         ++ritr;
     }
 
-    for(int j = 0; j < n; ++j){
+    long long min = std::min(n, i);
+    for(long long j = 0; j < n; ++j){
         if(a.at(j) < vec.at(j)){
             a.at(j) = vec.at(j);
         }else{
