@@ -25,18 +25,15 @@ int main(){
     long long i = 0;
     auto ritr = mp.rbegin();
     std::vector<long long> vec;
-    while(i < n){
-//    while(i < n || mp.rend() != ritr){
-        long long val = ritr->first, num = ritr->second;
-        std::cout << i << std::endl;
+    while(mp.rend() != ritr && i < n){
+        long long val = ritr->first, num = ritr++->second;
         std::vector<long long> buf(num, val);
         vec.insert(vec.end(), buf.begin(), buf.end());
         i += num;
-        ++ritr;
     }
 
     long long min = std::min(n, i);
-    for(long long j = 0; j < n; ++j){
+    for(long long j = 0; j < min; ++j){
         if(a.at(j) < vec.at(j)){
             a.at(j) = vec.at(j);
         }else{
