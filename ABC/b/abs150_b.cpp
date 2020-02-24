@@ -1,0 +1,1 @@
+#include <iostream>int main(){    int n;    std::string s;    std::cin >> n >> s;    int count = 0;    for(int i = 0; i <= n - 3; ++i){        if("ABC" == s.substr(i, 3)){            ++count;        }    }    std::cout << count << std::endl;    return 0;}
