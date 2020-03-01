@@ -1,0 +1,1 @@
+#include <iostream>int main(){    long long a, b, k;    std::cin >> a >> b >> k;    long long x = std::min(a, k);    a -= x;    k -= x;    if(0 != k){        b -= std::min(b, k);    }    std::cout << a << " " << b << std::endl;    return 0;}

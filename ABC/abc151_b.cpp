@@ -1,0 +1,1 @@
+#include <iostream>int main(){    int n, k, m;    std::cin >> n >> k >> m;    int sum = 0;    for(int i = 0; i < n - 1; ++i){        int val;        std::cin >> val;        sum += val;    }    int ans = std::max(0, n * m - sum);    if(k < ans){        ans = -1;    }    std::cout << ans << std::endl;    return 0;}
