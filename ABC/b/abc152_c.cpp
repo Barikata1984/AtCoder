@@ -1,0 +1,1 @@
+#include <algorithm>#include <iostream>int main(){    char a, b;    std::cin >> a >> b;    std::string aStr(b - 48, a), bStr(a - 48, b);    std::cout << std::min(aStr, bStr) << std::endl;    return 0;}
