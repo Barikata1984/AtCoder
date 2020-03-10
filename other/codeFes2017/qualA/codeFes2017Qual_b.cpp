@@ -3,35 +3,32 @@
 
 using Graph = std::vector<std::vector<int>>;
 
-bool dfs(std::vector<int> ref, Graph &g, int initV, int v, int edges){
-    std::cout << v << std::endl;
+void dfs(std::vector<bool> seen, Graph &g, int &count, int initV, int v, int edges){
     ++edges;
     if(edges < 4){
-        ref.at(edges - 1) = v;
+        seen.at(v) = true;
         for(auto nextV : g.at(v)){
-            if(ref.end() != std::find(ref.begin(), ref.end(), nextV)){
+            if(seen.at(nextV)){
                 continue;
             }
-            return dfs(ref, g, initV, nextV, edges);
+
+            dfs(seen, g, count, initV, nextV, edges);
         }
     }else{
         auto begin = g.at(v).begin(), end = g.at(v).end();
-        if(end != std::find(begin, end, initV)){
-//            return false;
-        }else{
+        if(end == std::find(begin, end, initV)){
             std::cout << initV << ", " << v << std::endl;
             g.at(v).push_back(initV);
             g.at(initV).push_back(v);
-            return true;
+            ++count;
         }
     }
-
-//    return false;
 }
 
 int main(){
     int n, m;
     std::cin >> n >> m;
+
     Graph g(n);
     for(int i = 0; i < m; ++i){
         int a, b;
@@ -42,12 +39,9 @@ int main(){
 
     int count = 0;
     for(int i = 0; i < n; ++i){
-        std::vector<int> ref(3, -1);
+        std::vector<bool> seen(n, false);
         int edges = 0;
-        if(dfs(ref, g, i, i, edges)){
-            ++count;
-        }
-        std::cout << "------" << std::endl;
+        dfs(seen, g, count, i, i, edges);
     }
 
     std::cout << count << std::endl;
