@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <vector>
 
@@ -13,6 +14,9 @@ int main(){
     int val, current = 0;
     while(std::cin >> val){
         auto itr = std::find(cases.begin(), cases.end(), val);
+        if(cases.end() == itr){
+            continue;
+        }
         int buf = *itr;
         *itr = current;
         current = val;
