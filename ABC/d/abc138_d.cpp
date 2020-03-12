@@ -3,12 +3,12 @@
 
 using Graph = std::vector<std::vector<int>>;
 
-void dfs(std::vector<bool> &seen, std::vector<long long> &scores, Graph &g, int v){
-    seen.at(v) = true;
+void dfs(std::vector<int> &count, std::vector<int> &score, Graph &g, int v, int p){
+    score.at(v) += count.at(v);
     for(auto nextV : g.at(v)){
-        if(seen.at(nextV)){
-            scors.at(nextV) += scores.at(v);
-            dfs(counts, scores, g, nextV);
+        if(p != nextV){
+            score.at(nextV) += score.at(v);
+            dfs(count, score, g, nextV, v);
         }
     }
 }
@@ -18,32 +18,32 @@ int main(){
     std::cin >> n >> q;
 
     Graph g(n);
-    for(int i = 1; i < n; ++i){
+    for(int i = 0; i < n - 1; ++i){
         int a, b;
         std::cin >> a >> b;
-
-        g.at(a - 1).push_back(b - 1);
-        g.at(b - 1).push_back(a - 1); // for undirected graphs
+        --a; --b;
+        g.at(a).push_back(b);
+        g.at(b).push_back(a);
     }
 
-    std::vector<long long> scores(n, 0);
+    std::vector<int> count(n);
     for(int i = 0; i < q; ++i){
-        int p, x;
-        std::cin >> p >> x;
-        scores.at(p - 1) = x;
+        int index, val;
+        std::cin >> index >> val;
+        count.at(index - 1) += val;
     }
 
-    std::vector<bool> seen(n, false);
-    dfs(counts, scores, g, p - 1);
+    std::vector<int> score(n, 0);
+    dfs(count, score, g, 0, -1);
 
     for(int i = 0; i < n; ++i){
-        std::cout << counts.at(i);
+        std::cout << score.at(i);
         if(n - 1 != i){
             std::cout << " ";
-        }else{
-            std::cout << std::endl;
         }
     }
 
-    return 0;
+    std::cout << std::endl;
+
+    return 0;    
 }
