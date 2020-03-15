@@ -1,17 +1,6 @@
+
 #include <iostream>
 #include <vector>
-
-void print(std::vector<int> vec){
-    int n = vec.size();
-    for(int i = 0; i < n; ++i){
-        std::cout << vec.at(i);
-        if(i != n - 1){
-            std::cout << " ";
-        }else{
-            std::cout << std::endl;
-        }
-    }
-}
 
 int main(){
     std::vector<int> vec(9);
@@ -25,27 +14,20 @@ int main(){
         int val;
         std::cin >> val;
         auto itr = std::find(std::begin(vec), std::end(vec), val);
-        if(std::end(vec) != itr){
-            *itr = -1;
-        }
+        *itr = -1;
     }
-
-    print(vec);
 
     bool flg = false;
     int i = 0;
     while(!flg && i < 3){
-        flg = flg && -1 == vec.at(i + 0);
-        flg = flg && -1 == vec.at(i + 3);
-        flg = flg && -1 == vec.at(i + 6);
+        flg = -1 == vec.at(i) && -1 == vec.at(i + 3) && -1 == vec.at(i + 6);
         ++i;
-    }
 
-    i = 0;
-    if(!flg && i < 3){
-        flg = flg && -1 == vec.at(i * 3 + 0);
-        flg = flg && -1 == vec.at(i * 2 + 1);
-        flg = flg && -1 == vec.at(i * 3 + 2);
+    int i = 0;
+    while(!flg && i < 3){ // horizonral
+        for(int j = 0; j < 3; ++j){
+            flg = flg && -1 == vec.at(i * 3 + j);
+        }
         ++i;
     }
     

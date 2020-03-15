@@ -1,15 +1,20 @@
+#include <algorithm>
 #include <iostream>
+#include <numeric>
+#include <vector>
 
 int main(){
-    int h, a, i = 0;
-    std::cin >> h >> a;
+    int n, k;
+    std::cin >> n >> k;
 
-    while(0 < h){
-        h -= a;
-        ++i;
+    std::vector<int> h(n);
+    for(int i = 0; i < n; ++i){
+        std::cin >> h.at(i);
     }
 
-    std::cout << i << std::endl;
+    std::sort(std::begin(h), std::end(h), std::greater<int>());
+    int min = std::min(n, k);
+    std::cout << std::accumulate(std::begin(h) + min, std::end(h), 0ll) << std::endl;
 
     return 0;
 }
