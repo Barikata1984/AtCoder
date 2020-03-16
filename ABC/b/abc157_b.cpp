@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <vector>
 
@@ -22,12 +21,11 @@ int main(){
     while(!flg && i < 3){
         flg = -1 == vec.at(i) && -1 == vec.at(i + 3) && -1 == vec.at(i + 6);
         ++i;
+    }
 
-    int i = 0;
+    i = 0;
     while(!flg && i < 3){ // horizonral
-        for(int j = 0; j < 3; ++j){
-            flg = flg && -1 == vec.at(i * 3 + j);
-        }
+        flg = -1 == vec.at(i * 3 + 0) && -1 == vec.at(i * 3 + 1) && -1 == vec.at(i * 3 + 2);
         ++i;
     }
     
