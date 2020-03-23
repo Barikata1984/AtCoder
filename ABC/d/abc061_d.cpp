@@ -2,9 +2,11 @@
 #include <iostream>
 #include <vector>
 
-#define inf 1000000000000000007
+// for the bellman-ford (BF) method
+using graphBF = std::vector<std::vector<long long>>;
 
-using grapharray = std::vector<std::vector<long long>>; // for belman-ford methods
+#define INF (long long)(1e18 + 7) 
+#define ALL(x) std::begin(x), std::end(x) 
 
 void print(std::vector<long long> vec){
     int n = vec.size();
@@ -13,59 +15,52 @@ void print(std::vector<long long> vec){
     }
 }
 
-void setsew(long long &s, long long &e, long long &w, const grapharray &g, const long long &v){
-    s = g.at(v).at(0);
-    e = g.at(v).at(1);
-    w = g.at(v).at(2);
-
-    return;
-}
-
 int main(){
     int n, m;
     std::cin >> n >> m;
 
-    grapharray g;
-    long long a, b, c;
-    while(std::cin >> a >> b >> c){
-        g.push_back(std::vector<long long>{a - 1, b - 1, c});
+    graphBF g;
+    std::vector<long long> s(m), e(m), w(m);
+    for(int i = 0; i < m; ++i){
+        std::cin >> s.at(i) >> e.at(i) >> w.at(i);
+        --s.at(i); --e.at(i); w.at(i); // since from-1-indexes are given, s and t have to be adjusted by -1
     }
 
-    std::vector<long long> cost(n, -inf);
-    std::vector<bool> isUpdated(n, false);
-    cost.at(0) = 0;
+    std::vector<long long> score(n, -INF);
+    score.at(0) = 0;
     
-    bool flg = false;
-    long long count = 0, s, e, w;
-    while(!flg && count < n){
-        for(int i = 0; i < m; ++i){
-            setsew(s, e, w, g, i);
-            long long buf = std::max(cost.at(e), cost.at(s) + w);
- //           std::cout << cost.at(s) + w << std::endl;
-            if(buf != cost.at(e)){
-                cost.at(e) = buf;
-                isUpdated.at(e) = true;
+    for(int i = 0; i < n - 1; ++i){
+        for(int j = 0; j < m; ++j){
+            long long buf = std::max(score.at(e.at(j)), score.at(s.at(j)) + w.at(j));
+            if(buf != score.at(e.at(j))){
+                score.at(e.at(j)) = buf;
             }
         }
         
-//        print(cost);
+//        print(score);
 //        std::cout << "------" << std::endl;
-
-        auto itr = std::find(std::begin(isUpdated), std::end(isUpdated), true);
-        flg = std::end(isUpdated) == itr;
-        std::fill(std::begin(isUpdated), std::end(isUpdated), false);
-        ++count;
-    }
-    
-    if(1 == n){
-        std::cout << 0 << std::endl;
-        return 0;
     }
 
-    if(n == count){
-        std::cout << "inf" << std::endl;
+    // updating a score at a certain vertex at the Nth search secures the existence of a (positive, in this case,) cycle
+    // in the following sectcion, it is going to be examined whether the update, if exists, will affect the score at score.at(n - 1)
+    std::vector<bool> isUpdated(n, false);
+    for(int j = 0; j < m; ++j){
+        // if s.at(j) has been updated, e.at(j) also to be
+        if(isUpdated.at(s.at(j))){
+            isUpdated.at(e.at(j)) = true;
+        // verify whether score.at(e.at(j)) will be updated, which means there is a cycle
+        }else{
+            long long buf = std::max(score.at(e.at(j)), score.at(s.at(j)) + w.at(j));
+            if(buf != score.at(e.at(j))){
+                isUpdated.at(e.at(j)) = true;
+            }
+        }
+    }
+
+    if(isUpdated.at(n - 1)){
+        std::cout << "inf" << std::endl; // the Nth vertex was affected by the cycle
     }else{
-        std::cout << cost.at(n - 1) << std::endl;
+        std::cout << score.at(n - 1) << std::endl;
     }
 
     return 0;
