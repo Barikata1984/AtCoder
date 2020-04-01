@@ -1,16 +1,10 @@
 #include <iostream>
-#include <vector>
 
 int main(){
-    int n; 
-    std::cin >> n;
+    int n, a, b; 
+    std::cin >> n >> a >> b;
 
-    int ans = n / 2;
-    if(0 == n % 2){
-        ans -= 1;
-    }
-    
-    std::cout << ans << std::endl;
+    std::cout << std::min(a, b) << " " << std::max(0, a + b - n) << std::endl;
 
     return 0;
 }
