@@ -1,1 +1,23 @@
-#include <iostream>#include <map>#include <vector>#include <algorithm>int main(){    std::string s;    std::cin >> s;    bool flg;    int length, j;    std::vector<int> vec;        for(int i = 0; i < s.size(); ++i){//        std::cout << "i: " << i << std::endl;        flg = true;        j = 0;        length = 0;        while(flg){//            std::cout << "j: " << j << std::endl;            if(s.size() - i == j){                flg = false;                break;            }            switch(s.at(i + j)){                case 'A':                case 'T':                case 'G':                case 'C':                    ++length;                    break;                default :                    flg = false;                    break;            }            ++j;        }        vec.push_back(length);    }    std::cout << *max_element(vec.begin(), vec.end()) << std::endl;    return 0;}
+#include <algorithm>
+#include <iostream>
+
+int main(){
+    std::string s;
+    std::cin >> s;
+
+    int ans = 0, count = 0;
+    for(int i = 0; i < s.size(); ++i){
+        char ch = s.at(i);
+        if('A' == ch || 'C' == ch || 'G' == ch || 'T' == ch){
+            ++count;
+        }else{
+            ans = std::max(ans, count);
+            count = 0;
+        }
+    }
+
+    ans = std::max(ans, count);
+    std::cout << ans << std::endl;
+
+    return 0;
+}
